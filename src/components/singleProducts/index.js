@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import Loading from '../../layouts/Loader/Loader';
+import Relatedproducts from './Relatedproducts';
 
-const Index = () => {
+const Index = (props) => {
     const { id } = useParams()
     const [meal, setMeal] = useState({});
     const [instructions, setInstructions] = useState([])
@@ -108,7 +109,7 @@ const Index = () => {
                                     </svg>
                                     <span className="ml-3">4 Reviews</span>
                                 </span>
-                                <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-800 text-gray-500 space-x-2">
+                                <span className="md:flex ml-3 pl-3 py-2 border-l-2 border-gray-800 text-gray-500 space-x-2 hidden ">
                                     <a>
                                         <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                                             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -145,90 +146,113 @@ const Index = () => {
                                 <a onClick={() => setActiveState(1)} className={`${(activeState === 1) ? "text-green-400 border-b-2 border-green-500" : "border-b-2 border-gray-800"} flex-grow py-2 text-lg px-1 cursor-pointer `}>Ingredients</a>
                                 <a onClick={() => setActiveState(2)} className={`${(activeState === 2) ? "text-green-400 border-b-2 border-green-500" : "border-b-2 border-gray-800"} flex-grow py-2 text-lg px-1 cursor-pointer `}>Video</a>
                             </div>
-                            {
-                                activeState === 0 && <Fragment>
-                                    <ul className="stretchAnimation mb-8 space-y-4 text-left text-gray-500 dark:text-gray-400">
-                                        {instructions.map((step, index) => {
-                                            if (step.length < 5) {
-                                                return <Fragment></Fragment>;
-                                            }
+                            <Fragment>
+                                <div className=" mb-20 ">
+                                    {/*  instructions Section */}
+                                    {
+                                        activeState === 0 && <Fragment>
 
-                                            return <Fragment key={index}>
-                                                <li className="flex items-center space-x-3">
 
-                                                    <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                                    <span>{step}</span>
-                                                </li>
-                                            </Fragment>
-                                        }
-                                        )}
-                                    </ul>
-                                </Fragment>
-                            }
-                            {/* Ingredients Section  */}
+                                            <ul className=" stretchAnimation text-left space-y-4 text-gray-500 dark:text-gray-400">
+                                                {instructions.map((step, index) => {
+                                                    if (step.length < 5) {
+                                                        return <Fragment></Fragment>;
+                                                    }
 
-                            {
-                                activeState === 1 && <Fragment>
-                                    <div className='stretchAnimation'>
-                                        <div className="flex flex-row -m-4 flex-wrap">
-                                            {ingredients.map((ingredient, index) => {
-                                                const imgName = ingredient[1].replace(' ', "%20")
-                                                const imgURL = `https://www.themealdb.com/images/ingredients/${imgName}.png`
-                                                return <Fragment key={index}>
-                                                    <div className="lg:w-1/3  p-4 ">
-                                                        <div className='w-full'>
+                                                    return <Fragment key={index}>
+                                                        <li className="flex items-center space-x-3">
 
-                                                            <a className="block relative h-48 rounded overflow-hidden">
-                                                                <img alt="ecommerce" className=" w-full h-auto  object-cover object-center rounded" src={imgURL} />
-                                                            </a>
-                                                            <div className="my-3">
-                                                                <h3 className="text-white text-xs tracking-widest title-font mb-1">{ingredient[0]} {ingredient[1]}</h3>
-                                                                {/* <h2 className="text-gray-900 title-font text-lg font-medium">{ingredient[1]}</h2> */}
+                                                            <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                                            <span>{step}</span>
+                                                        </li>
+                                                    </Fragment>
+                                                }
+                                                )}
+                                            </ul>
 
+                                        </Fragment>
+                                    }
+                                    {/* Ingredients Section  */}
+                                    {
+                                        activeState === 1 && <Fragment>
+
+                                            <div className='stretchAnimation'>
+                                                <div className="flex flex-row m-4 flex-wrap">
+                                                    {ingredients.map((ingredient, index) => {
+                                                        const imgName = ingredient[1].replace(' ', "%20")
+                                                        const imgURL = `https://www.themealdb.com/images/ingredients/${imgName}.png`
+                                                        return <Fragment key={index}>
+                                                            <div className="lg:w-1/3  p-4 ">
+                                                                <div className='w-full'>
+
+                                                                    <a className="block relative h-48 rounded overflow-hidden">
+                                                                        <img alt="ecommerce" className=" w-full h-auto  object-cover object-center rounded" src={imgURL} />
+                                                                    </a>
+                                                                    <div className="my-3">
+                                                                        <h3 className="text-white text-xs tracking-widest title-font mb-1">{ingredient[0]} {ingredient[1]}</h3>
+                                                                        {/* <h2 className="text-gray-900 title-font text-lg font-medium">{ingredient[1]}</h2> */}
+
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
 
 
-                                                </Fragment>
-                                            })}
-                                        </div>
-
-                                        {/* <div className='mb-2' key={index}>{ingredient[0]} <span className='text-purple-500'> {ingredient[1]}</span></div> */}
+                                                        </Fragment>
+                                                    })}
+                                                </div>
 
 
-                                    </div>
-                                </Fragment>
-                            }
-                            {/* Video Section  */}
-                            {
-                                activeState === 2 && <Fragment>
-                                    <div className='stretchAnimation flex flex-col items-center justify-center my-10 '>
-                                        <iframe width="560" height="315" src={youTube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
-                                    </div>
-                                </Fragment>
-                            }
 
 
-                            {/* <p className="leading-relaxed">{meal.strInstructions}</p> */}
+                                            </div>
+                                        </Fragment>
+                                    }
 
-                            <div className="flex justify-end pt-5 border-t-2 border-gray-800 mt-5 ">
+                                    {/* Video Section  */}
+                                    {
+                                        activeState === 2 && <Fragment>
+                                            <div className='stretchAnimation  mb-8 space-y-4'>
+                                                <div className="flex flex-col items-center justify-center my-10">
+
+                                                    <iframe width="560" height="315" src={youTube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+                                                </div>
+                                            </div>
+                                        </Fragment>
+                                    }
+
+
+                                </div>
+
+
+
+                            </Fragment>
+
+                            {/* Read More */}
+                            <div className="flex justify-end pb-5 my-20 border-b-2 border-gray-800 mb-5 ">
                                 {/* <span className="title-font font-medium text-2xl text-white">$58.00</span> */}
                                 <a href={meal.strSource} target="_blank" rel="noopener noreferrer">
                                     <button className="flex ml-auto text-white bg-green-800 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded transition ease-in-out delay-150 hover:-translate-x-1 hover:scale-110 duration-300">Read More ...</button>
                                 </a>
 
-                                {/* <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                                    <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                                    </svg>
-                                </button> */}
+
                             </div>
+
+
+
+                            {/* Related Products  */}
+                            <div className="border-b-2 pb-5 border-gray-800">
+                                <h3 className="my-5 text-3xl text-left border-b-2 pb-5 border-gray-800"> Releated Products</h3>
+                            <Relatedproducts Category={meal.strCategory} deviceType={props.deviceType} idMeal={meal.idMeal} />
+                            </div>
+
+
+                            
+                          
                         </div>
                     </div>
                 </div>
-            </section>
-        </Fragment>
+            </section >
+        </Fragment >
     )
 }
 
