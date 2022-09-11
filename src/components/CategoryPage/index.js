@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import categories from './categories'
-const Index = () => {
+const CategoryPage = () => {
     console.log(categories)
     const navigate = useNavigate();
     const [category, setCategory] = useState(categories)
@@ -70,4 +70,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default CategoryPage

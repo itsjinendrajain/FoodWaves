@@ -61,7 +61,7 @@ const Index = (props) => {
         fetchData();
 
 
-    }, [])
+    }, [id])
 
     if (loading) {
         return <Fragment>
@@ -129,11 +129,11 @@ const Index = (props) => {
                             </div>
                             {
                                 tags.length > 0 && <Fragment>
-                                    <div className="flex mb-4">
+                                    <div className="flex flex-wrap  my-4 gap-2">
                                         {/* <span className='font-bold text-pink-500 text-base mr-4' >Tag  </span> */}
                                         {tags.map((tag, index) => {
-                                            return <Fragment key={index}>
-                                                <div className='ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 rounded-full bg-white text-gray-700 border'>{tag}</div>
+                                            return <Fragment key={`tag${index}`}>
+                                                <div className='ml-4  text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 rounded-full bg-white text-gray-700 border'>{tag}</div>
                                             </Fragment>
                                         })}
                                     </div>
@@ -156,7 +156,7 @@ const Index = (props) => {
                                             <ul className=" stretchAnimation text-left space-y-4 text-gray-500 dark:text-gray-400">
                                                 {instructions.map((step, index) => {
                                                     if (step.length < 5) {
-                                                        return <Fragment></Fragment>;
+                                                        return <Fragment key={`instruct${index}`}></Fragment>;
                                                     }
 
                                                     return <Fragment key={index}>
@@ -181,13 +181,16 @@ const Index = (props) => {
                                                     {ingredients.map((ingredient, index) => {
                                                         const imgName = ingredient[1].replace(' ', "%20")
                                                         const imgURL = `https://www.themealdb.com/images/ingredients/${imgName}.png`
-                                                        return <Fragment key={index}>
+                                                        return <Fragment key={`ing${index}`}>
+                                                            
                                                             <div className="lg:w-1/3  p-4 ">
                                                                 <div className='w-full'>
-
+                                                                    <Link to={`/ingredient/${ingredient[1]}`}>
+                                                                    
                                                                     <a className="block relative h-48 rounded overflow-hidden">
-                                                                        <img alt="ecommerce" className=" w-full h-auto  object-cover object-center rounded" src={imgURL} />
+                                                                        <img alt={ingredient[1]} className=" w-full h-auto  object-cover object-center rounded" src={imgURL} />
                                                                     </a>
+                                                                    </Link>
                                                                     <div className="my-3">
                                                                         <h3 className="text-white text-xs tracking-widest title-font mb-1">{ingredient[0]} {ingredient[1]}</h3>
                                                                         {/* <h2 className="text-gray-900 title-font text-lg font-medium">{ingredient[1]}</h2> */}
@@ -214,7 +217,7 @@ const Index = (props) => {
                                             <div className='stretchAnimation  mb-8 space-y-4'>
                                                 <div className="flex flex-col items-center justify-center my-10">
 
-                                                    <iframe width="560" height="315" src={youTube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+                                                    <iframe width="560" className='max-w-full' height="315" src={youTube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
                                                 </div>
                                             </div>
                                         </Fragment>

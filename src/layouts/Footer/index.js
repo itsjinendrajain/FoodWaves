@@ -35,12 +35,12 @@ const Index = () => {
                         <div className="lg:w-1/4 w-full footer-col">
                             <div className="footer_detail">
                                 <a href="" className="footer-logo">
-                                    Feane
+                                    FoodWaves
                                 </a>
                                 <p>
-                                    Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+                                    Recipe has no soul.<br /> You, as the cook, must bring soul to the recipe.
                                 </p>
-                                <div className="flex justify-between mt-4">
+                                <div className="flex justify-center gap-1 mt-4">
 
                                     <SocialIcon url="https://github.com/itsjinendrajain" network="twitter" />
                                     <SocialIcon url="https://github.com/itsjinendrajain" network="instagram" />

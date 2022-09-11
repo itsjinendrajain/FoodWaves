@@ -5,7 +5,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import Loading from "../../layouts/Loader/Loader"
 import { HeartIcon } from '@heroicons/react/24/solid'
 import categories from '../CategoryPage/categories';
-const DisplayCategoryProducts = () => {
+const DisplayIngredientProducts = () => {
     const { name } = useParams()
     const [loading, setLoading] = useState(true);
     const [categoryProducts, setCategoryProducts] = useState([]);
@@ -14,11 +14,11 @@ const DisplayCategoryProducts = () => {
     const hist = useLocation()
 
     //Get Categories Descriptions 
-    const getCategoriesDesp = (categories.find((category)=>{ return category.strCategory==name})).strCategoryDescription
+    // const getCategoriesDesp = (categories.find((category)=>{ return category.strCategory==name})).strCategoryDescription
     useEffect(() => {
         window.scrollTo(0, 0)
         async function fetchData() {
-            const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`;
+            const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${name}`;
             const res = await axios.get(url);
             const data = res.data.meals;
             setCategoryProducts(data)
@@ -43,7 +43,7 @@ const DisplayCategoryProducts = () => {
                 <div className="container px-5 pt-24 mx-auto">
                     <div className="flex flex-wrap w-full mb-2 flex-col items-center text-center">
                         <h1 className="sm:text-3xl text-2xl font-bold title-font mb-2 text-white">All <span className='text-green-600'>{name}</span> Recipies</h1>
-                        <p className=" w-full leading-relaxed text-gray-500">{(getCategoriesDesp) ? getCategoriesDesp : "view our all premium recipies"}</p>
+                        {/* <p className=" w-full leading-relaxed text-gray-500">{(getCategoriesDesp) ? getCategoriesDesp : "view our all premium recipies"}</p> */}
                     </div>
                 </div>
                 <div className="container px-5 py-24 mx-auto">
@@ -79,4 +79,4 @@ const DisplayCategoryProducts = () => {
     )
 }
 
-export default DisplayCategoryProducts
+export default DisplayIngredientProducts

@@ -4,24 +4,28 @@ import { Link } from 'react-router-dom';
 import { useLocation, useParams } from 'react-router-dom'
 import Loading from "../../layouts/Loader/Loader"
 import { HeartIcon } from '@heroicons/react/24/solid'
-import categories from '../CategoryPage/categories';
-const DisplayCategoryProducts = () => {
+const DisplayProductsByAlphabatic = () => {
     const { name } = useParams()
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [noResultFound, setNoResultFound] = useState(false)
     const [categoryProducts, setCategoryProducts] = useState([]);
     
 
-    const hist = useLocation()
-
     //Get Categories Descriptions 
-    const getCategoriesDesp = (categories.find((category)=>{ return category.strCategory==name})).strCategoryDescription
+    // const getCategoriesDesp = (categories.find((category)=>{ return category.strCategory==name})).strCategoryDescription
     useEffect(() => {
         window.scrollTo(0, 0)
+        console.log("I am In Alphabetic");
         async function fetchData() {
-            const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`;
+            const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=${name}`;
             const res = await axios.get(url);
             const data = res.data.meals;
-            setCategoryProducts(data)
+            if(data!=null){
+                setCategoryProducts(data)
+
+            }else{
+                setNoResultFound(true)
+            }
             setLoading(false)
         }
         fetchData();
@@ -42,15 +46,15 @@ const DisplayCategoryProducts = () => {
 
                 <div className="container px-5 pt-24 mx-auto">
                     <div className="flex flex-wrap w-full mb-2 flex-col items-center text-center">
-                        <h1 className="sm:text-3xl text-2xl font-bold title-font mb-2 text-white">All <span className='text-green-600'>{name}</span> Recipies</h1>
-                        <p className=" w-full leading-relaxed text-gray-500">{(getCategoriesDesp) ? getCategoriesDesp : "view our all premium recipies"}</p>
+                        <h1 className="sm:text-3xl text-2xl font-bold title-font mb-2 text-white">All <span className='text-green-600 uppercase'>{name}</span> Recipies</h1>
+                        {/* <p className=" w-full leading-relaxed text-gray-500">{(getCategoriesDesp) ? getCategoriesDesp : "view our all premium recipies"}</p> */}
                     </div>
                 </div>
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap m-4">
 
-                        {categoryProducts.map((product, index) => {
-                            return <Fragment key={index}>
+                        {categoryProducts && categoryProducts.length>0 && categoryProducts.map((product, index) => {
+                            return <Fragment key={product.strMeal}>
 
                                 <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
                                     <Link to={`/recipe/${product.idMeal}`}>
@@ -69,6 +73,17 @@ const DisplayCategoryProducts = () => {
                             </Fragment>
                         })}
 
+                        {/* when No Meal Found  */}
+                        {noResultFound  && <Fragment>
+                            <div className="container px-5 py-24 mx-auto">
+                                <div className="flex flex-wrap w-full mb-2 flex-col items-center text-center">
+                                    <p className="sm:text-3xl text-2xl font-bold title-font mb-2 text-white">No Recpie Found</p>
+                                    <p className=" w-full leading-relaxed text-gray-500">We are adding More Recpie Soon</p>
+                                </div>
+                            </div>
+                            
+                            </Fragment>} 
+
 
 
 
@@ -79,4 +94,4 @@ const DisplayCategoryProducts = () => {
     )
 }
 
-export default DisplayCategoryProducts
+export default DisplayProductsByAlphabatic

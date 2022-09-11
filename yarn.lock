@@ -3333,6 +3333,11 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+country-flags-svg@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/country-flags-svg/-/country-flags-svg-1.1.6.tgz#150981ee1cc751374015820f5b65f366074780fb"
+  integrity sha512-psH37hXJvoL5q4NjpOS5K/XorDwHPlchBXCTkFv8e9Jh/VCcfKRmB5Gsdpq5ZrsrJvW2MrLdzamUecPosevsLw==
+
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.3.tgz"
@@ -7272,7 +7277,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.0, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7511,6 +7516,19 @@ react-social-icons@^5.14.0:
   integrity sha512-E5pR2pIJM0vW1BhX7LdMlQS6MD2qOF8wdIm+PEfqFpW3Pn/VwLtbrjywE3/DG+rZ1YYM0GM8M11jaBxelbz/yQ==
   dependencies:
     prop-types "^15.7.2"
+
+react-type-animation@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-type-animation/-/react-type-animation-2.1.1.tgz#0575714ed734d132019c2ec4325e6364eea342b1"
+  integrity sha512-leXq9tZLsfbQWi+1PvsSc2XZYv9CqRrChvuv81M0UPECggBEQgplQzTO9LzgjYNPdnhf4UMeEtZMI4G1qPpuwA==
+
+react-typed@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-typed/-/react-typed-1.2.0.tgz#c5fb0bea4c972545c29fceb9c1d22495b6636b58"
+  integrity sha512-aDsaA6zkjAFJs8285APOqE85l/kwJ0/ZJmBhARwUrza4TTttrMM5FcMCGEDdThdfUdHo/0l9WXmxp1m2ik4qdw==
+  dependencies:
+    prop-types "^15.6.0"
+    typed.js "^2.0.6"
 
 react@^18.2.0:
   version "18.2.0"
@@ -8543,6 +8561,11 @@ type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
+
+typed.js@^2.0.6:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/typed.js/-/typed.js-2.0.12.tgz#246aff074c8e18d32ec27acb7be15094ac0bc0e1"
+  integrity sha512-lyACZh1cu+vpfYY3DG/bvsGLXXbdoDDpWxmqta10IQUdMXisMXOEyl+jos+YT9uBbzK4QaKYBjT3R0kTJO0Slw==
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"

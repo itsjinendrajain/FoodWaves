@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Link } from 'react-router-dom';
 
 const Relatedproducts = ({ deviceType, Category, idMeal }) => {
     const [loading, setLoading] = useState(true);
@@ -18,7 +19,7 @@ const Relatedproducts = ({ deviceType, Category, idMeal }) => {
             setLoading(false)
         }
         fetchData();
-    }, [])
+    }, [idMeal, Category])
 
     const responsive = {
         desktop: {
@@ -38,7 +39,7 @@ const Relatedproducts = ({ deviceType, Category, idMeal }) => {
         }
     };
     return (
-   
+
         <Fragment>
             <Fragment>
 
@@ -56,23 +57,26 @@ const Relatedproducts = ({ deviceType, Category, idMeal }) => {
                 keyBoardControl={true}
                 customTransition="all .5"
                 transitionDuration={500}
-                containerClass="carousel-container"
+                containerclassName="carousel-container"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 deviceType={deviceType}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding-40-px px-4"
+                dotListclassName="custom-dot-list-style"
+                itemclassName="carousel-item-padding-40-px "
             >
 
-                {categoryProducts.map((meal,index) => {
+                {categoryProducts.map((meal, index) => {
                     return <Fragment key={index}>
+
                         <div>
-                            <div className='w-full'>
+                            <Link to={`/recipe/${meal.idMeal}`}>
+                                <div className='w-full  pr-5'>
 
-                                <img alt="ecommerce" className=" w-full h-auto  object-cover object-center rounded" src={meal.strMealThumb} />
+                                    <img alt="ecommerce" className=" w-full h-auto  object-cover object-center rounded" src={meal.strMealThumb} />
 
-                                <h3 className="text-white text-xs my-3 tracking-widest title-font mb-1">{meal.strMeal}</h3>
+                                    <h3 className="text-white text-xs my-3 tracking-widest title-font mb-1">{meal.strMeal}</h3>
 
-                            </div>
+                                </div>
+                            </Link>
 
                         </div>
                     </Fragment>

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useLocation, useParams } from 'react-router-dom'
 import Loading from "../../layouts/Loader/Loader"
 import { HeartIcon } from '@heroicons/react/24/solid'
-import categories from '../CategoryPage/categories';
 const Index = () => {
     const { name } = useParams()
     const [loading, setLoading] = useState(true);
@@ -14,13 +13,15 @@ const Index = () => {
     const hist = useLocation()
 
     //Get Categories Descriptions 
-    const getCategoriesDesp = (categories.find((category)=>{ return category.strCategory==name})).strCategoryDescription
+   
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
         async function fetchData() {
-            const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`;
+            const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${name}`;
+            console.log();
             const res = await axios.get(url);
             const data = res.data.meals;
+            console.log(data);
             setCategoryProducts(data)
             setLoading(false)
         }
@@ -42,8 +43,10 @@ const Index = () => {
 
                 <div className="container px-5 pt-24 mx-auto">
                     <div className="flex flex-wrap w-full mb-2 flex-col items-center text-center">
-                        <h1 className="sm:text-3xl text-2xl font-bold title-font mb-2 text-white">All {name} Recipies</h1>
-                        <p className=" w-full leading-relaxed text-gray-500">{(getCategoriesDesp) ? getCategoriesDesp : "view our all premium recipies"}</p>
+                        <h1 className="sm:text-3xl text-2xl font-bold title-font mb-2 text-white"
+                        >ALL <span className='text-green-600'>{name}</span>  Country Recipies
+                        </h1>
+                        <p className=" w-full leading-relaxed text-gray-500">view our {name} country premium recipies</p>
                     </div>
                 </div>
                 <div className="container px-5 py-24 mx-auto">
@@ -59,10 +62,10 @@ const Index = () => {
                                             <HeartIcon className='text-red-200 hover:h-12 hover:w-12 hover:text-red-600 absolute bottom-0 right-0 w-10 h-10' />
                                         </div>
                                         <div className="mt-4 flex">
-                                            {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>  */}
+                                            
                                             <h2 className="text-white hover:text-yellow-500 title-font text-lg font-medium">{product.strMeal} recipe</h2>
 
-                                            {/* <p className="mt-1">$16.00</p> */}
+                                          
                                         </div>
                                     </Link>
                                 </div>
