@@ -11,6 +11,7 @@ import Footer from "./layouts/Footer"
 import Navbar from "./layouts/Navbar"
 import 'preline';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DisplaySearchProducts from './components/displaySearchProducts';
 const App = () => {
   return (
     <Fragment>
@@ -33,6 +34,7 @@ const App = () => {
 
           // ** Search page
           <Route path={"/area/:name"} element={<AreaWiseProducts />} />
+          <Route path={"/search/:name"} element={<DisplaySearchProducts />} />
           <Route path={"/ingredient/:name"} element={<IngredientsWiseProducts />} />
           <Route path={"/alphabet/:name"} element={<AlphabetWiseProducts />} />
           <Route path={"/category/all"} element={<Category />} />

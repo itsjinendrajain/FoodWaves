@@ -61,7 +61,7 @@ const ListCountry = () => {
                         const flagUrl = findFlagUrlByNationality(country);
                      
                         return <Link key={`${country}`} to={`/area/${country}`}>
-                            <div>
+                            <div title={country}>
                                 <img src={flagUrl} alt={country} className="max-w-20 max-h-20" />
                             </div>
                         </Link>
