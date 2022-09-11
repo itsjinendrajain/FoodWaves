@@ -94,7 +94,7 @@ export default function Navbar() {
                                     if (navItem.type === navType.subMenu) {
                                         return <Fragment key={`navItem${index}`}>
                                             <div className="hs-dropdown [--strategy:static] sm:[--strategy:absolute] [--adaptive:none] sm:[--trigger:hover]">
-                                                <button type="button" className="flex items-center w-full uppercase text-base
+                                                <button type="button" className="p-0 flex items-center w-full uppercase text-base
                                                 font-robotocondensed
                                                 font-bold
                                                 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
@@ -112,8 +112,8 @@ export default function Navbar() {
                                                             return <div key={`subMenu${index2 + 20}`} className="flex flex-col">
                                                                 {Itemss.map((item, index) => {
                                                                     // console.log(item)
-                                                                    return <Link key={`subMenuItem${index2 + 1}${index}`} className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:hover:font-semibold" to={item.href}>
-                                                                        <img src={item.image} className="w-4 h-4" alt="" />
+                                                                    return <Link key={`subMenuItem${index2 + 1}${index}`} className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-base text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:hover:font-semibold" to={item.href}>
+                                                                        <img src={item.image} className="w-auto h-12" alt="" />
                                                                         {item.name}
                                                                     </Link>
                                                                 })}
@@ -126,8 +126,10 @@ export default function Navbar() {
                                     }
                                     else {
                                         return <Fragment key={`navItem${index}`}>
-                                            <Link className="block py-2 pr-4 pl-3 font-robotocondensed uppercase
-                                                font-bold text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" to={navItem.href}>{navItem.name}</Link>
+                                            <Link className="block py-2 pr-4 pl-3  text-base uppercase
+                                                font-robotocondensed
+                                                font-bold
+                                                text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" to={navItem.href}>{navItem.name}</Link>
 
                                         </Fragment>
 

@@ -1,23 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { TypeAnimation } from 'react-type-animation'
+import React, { Fragment } from 'react'
+
 import Typed from 'react-typed';
 import SearchForm from '../../layouts/SearchForm';
 const SearchButton = () => {
-  const [gretting , setGretting] = useState("")
-  useEffect(()=>{
-    const text = "Welcome To FoodWaves"
-    let i = 0;
-
-
-
-    const interval = setInterval(() => {
-      if (i >= text.length) clearInterval(interval);
-      setGretting((prevGreting) => prevGreting +text[i])
-      i++;
-    }, 300);
-
-    return () => clearInterval(interval);
-  },[])
   return (
     <Fragment>
       <div className="container px-5 py-24 mx-auto">
