@@ -1,7 +1,6 @@
 
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment } from 'react'
 import { Link } from "react-router-dom";
-import Loading from "../../layouts/Loader/Loader";
 
 
 const ListAlphabet = () => {
