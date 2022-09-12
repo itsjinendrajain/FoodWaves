@@ -93,7 +93,7 @@ export default function Navbar() {
                                 {navItems.length > 0 && navItems.map((navItem, index) => {
                                     if (navItem.type === navType.subMenu) {
                                         return <Fragment key={`navItem${index}`}>
-                                            <div className="hs-dropdown [--strategy:static] sm:[--strategy:absolute] [--adaptive:none] sm:[--trigger:hover]">
+                                            <div className="hs-dropdown [--strategy:static] sm:[--strategy:absolute] [--adaptive:none] ">
                                                 <button type="button" className="p-0 flex items-center w-full uppercase text-base
                                                 font-robotocondensed
                                                 font-bold
