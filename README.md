@@ -1,5 +1,6 @@
-# FoodWaves
+# FoodWaves 
 
+[FoodWaves - Live Demo](https://foodwaves.itsjinendrajain.com/)
 
 ### HomePage
 ![Homepage](https://github.com/itsjinendrajain/FoodWaves/blob/d00b7d76e446b57fa9ff663ef8b6b4704b663142/screenshot/FoodWaves-Homepage.png?raw=true)
