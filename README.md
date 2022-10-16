@@ -11,7 +11,7 @@
 ![Recipies Page](https://github.com/itsjinendrajain/FoodWaves/blob/main/screenshot/FoodWaves-Recipies_Page.png?raw=true)
 
 
-**For Installation **
+### For Installation
 
 ### Clone Repo
 ```
